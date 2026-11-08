@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>هدية صغيرة 💗</title>
+
+<style>
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-family: Tahoma, sans-serif;
+
+    background: linear-gradient(135deg, #fff0f5, #f1eaff, #fff5e9);
+
+    overflow: hidden;
+
+}
+
+.card {
+
+    background: rgba(255,255,255,0.85);
+
+    width: 90%;
+
+    max-width: 390px;
+
+    padding: 35px 25px;
+
+    border-radius: 28px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 40px #d9b9d955;
+
+    border: 1px solid white;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+.emoji {
+
+    font-size: 55px;
+
+    margin-bottom: 15px;
+
+}
+
+h2 {
+
+    color: #b17ca5;
+
+    font-size: 23px;
+
+}
+
+p {
+
+    color: #777080;
+
+    line-height: 2;
+
+    font-size: 16px;
+
+}
+
+button {
+
+    border: none;
+
+    padding: 13px 25px;
+
+    border-radius: 30px;
+
+    background: #f6cfe0;
+
+    color: #8e5976;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    margin-top: 15px;
+
+    transition: 0.3s;
+
+}
+
+button:hover {
+
+    transform: scale(1.07);
+
+    background: #edbad2;
+
+}
+
+#message {
+
+    display: none;
+
+}
+
+.heart {
+
+    position: absolute;
+
+    bottom: -30px;
+
+    animation: float 7s linear infinite;
+
+    opacity: 0.6;
+
+    z-index: 1;
+
+}
+
+@keyframes float {
+
+    to {
+
+        transform: translateY(-110vh) rotate(360deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card" id="card">
+
+    <div class="emoji">🎁</div>
+
+    <h2>عندك مفاجأة صغيرة!</h2>
+
+    <p>
+
+        أحيانًا أبسط الأشياء تحمل أجمل المشاعر...
+
+        وهذه البطاقة واحدة منها. 💗
+
+    </p>
+
+    <button onclick="openGift()">افتح الهدية ✨</button>
+
+    <div id="message">
+
+        <div class="emoji">🌷</div>
+
+        <h2>رسالة من القلب</h2>
+
+        <p>
+
+            أتمنى أن تكون أيامك مليئة بالفرح،
+
+            وأن تظل ابتسامتك حاضرة مهما تغيرت الظروف.
+
+            تستحق كل الأشياء الجميلة،
+
+            وكل الأمنيات التي تنتظر أن تتحقق.
+
+            <br><br>
+
+            لا تنسَ أن وجودك بحد ذاته شيء جميل. 🤍
+
+        </p>
+
+        <button onclick="anotherMessage()">مفاجأة أخيرة 💌</button>
+
+    </div>
+
+</div>
+
+<script>
+
+function openGift() {
+
+    document.querySelector(".card > .emoji").style.display = "none";
+
+    document.querySelector(".card > h2").style.display = "none";
+
+    document.querySelector(".card > p").style.display = "none";
+
+    document.querySelector(".card > button").style.display = "none";
+
+    document.getElementById("message").style.display = "block";
+
+    hearts();
+
+}
+
+function anotherMessage() {
+
+    document.getElementById("message").innerHTML = `
+
+        <div class="emoji">🦋</div>
+
+        <h2>وأخيرًا...</h2>
+
+        <p>
+
+        أتمنى أن تحمل لك الأيام القادمة
+
+        أخبارًا تفرح قلبك،
+
+        وأحلامًا تصبح واقعًا،
+
+        ولحظات جميلة لا تنساها أبدًا.
+
+        <br><br>
+
+        كل الأشياء الحلوة تشبه قلبك. 🤍
+
+        </p>
+
+        <div class="emoji">💗🌸✨</div>
+
+    `;
+
+    hearts();
+
+}
+
+function hearts() {
+
+    for(let i = 0; i < 20; i++) {
+
+        let heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.innerHTML = ["💗","🤍","🌸","✨"][Math.floor(Math.random()*4)];
+
+        heart.style.left = Math.random()*100 + "vw";
+
+        heart.style.animationDuration = (4 + Math.random()*5) + "s";
+
+        heart.style.fontSize = (15 + Math.random()*20) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 9000);
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>
